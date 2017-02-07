@@ -1,0 +1,2 @@
+INDEX VERSION 1.129+C:\Users\APCS1\Desktop\JazCSpring2017\.metadata\.plugins\org.eclipse.jdt.core
+351221734.index
