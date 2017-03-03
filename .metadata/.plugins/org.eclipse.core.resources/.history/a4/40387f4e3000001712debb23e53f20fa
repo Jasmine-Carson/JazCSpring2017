@@ -1,0 +1,51 @@
+package textExcel;
+
+// Update this file with your own code.
+
+public class Spreadsheet implements Grid
+{
+	private Cell[][] spreadsheet;
+	
+	public Spreadsheet(){
+		Cell[][] spreadsheet = new Cell[12][20];
+		for(int i = 0; i < 12; i++){
+			for (int j = 0; j < 20; j++){
+				spreadsheet[i][j] = new EmptyCell();
+			}
+		}
+	}
+	
+	@Override
+	public String processCommand(String command)
+	{
+		String[] words = command.split(" ");
+		
+		return null;
+	}
+
+	@Override
+	public int getRows()
+	{
+		return spreadsheet[0].length;
+	}
+
+	@Override
+	public int getCols()
+	{
+		return spreadsheet.length;
+	}
+
+	@Override
+	public Cell getCell(Location loc)
+	{		
+		return spreadsheet[loc.getCol()][loc.getRow()];
+	}
+
+	@Override
+	public String getGridText()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
