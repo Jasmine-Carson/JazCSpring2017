@@ -1,0 +1,24 @@
+package textExcel;
+
+public class TextCell implements Cell {
+
+	private String text;
+	private SpreadsheetLocation place;
+	
+	public TextCell(String str, String cellLoc){
+		text=str;
+		place = new SpreadsheetLocation(cellLoc);
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String fullCellText() {
+		return text;
+	}
+
+}
