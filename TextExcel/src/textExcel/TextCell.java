@@ -22,7 +22,7 @@ public class TextCell implements Cell {
 
 	@Override
 	public String fullCellText() {
-		return text;
+		return "\""+text+"\"";
 	}
 
 }

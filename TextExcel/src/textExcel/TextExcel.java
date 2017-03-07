@@ -13,12 +13,10 @@ public class TextExcel
 	    Scanner input = new Scanner(System.in);
 	    Spreadsheet sheet = new Spreadsheet();
 	    String userInput = input.nextLine();
-	    while(!userInput.equals("quit"));{
-	    	if(!userInput.equals("quit")){
-	    		System.out.println(sheet.processCommand(userInput));
-	    		userInput = input.nextLine();
-	    	}
+	    boolean quit = false;
+	    while(!userInput.equalsIgnoreCase("quit")){
+	    	System.out.println(sheet.processCommand(userInput));
+	    	userInput = input.nextLine();
 	    }
-	    System.out.println("Thank you for using Spreadsheet!");
 	}
 }

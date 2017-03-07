@@ -5,7 +5,7 @@ public class EmptyCell implements Cell{
 		return "          ";
 	}
 	public String fullCellText(){
-		return "";
+		return "\"\"";
 	}
 	public EmptyCell(){}
 }
