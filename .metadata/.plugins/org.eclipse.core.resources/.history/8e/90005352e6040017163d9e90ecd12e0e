@@ -21,7 +21,7 @@ public class SpreadsheetLocation implements Location
     
     public SpreadsheetLocation(String cellName)
     {
-    	if(cellName.charAt(0) > 96){
+    	if(cellName.charAt(0) > 'A'){
     		column = cellName.charAt(0)-97;
     	}
     	else{

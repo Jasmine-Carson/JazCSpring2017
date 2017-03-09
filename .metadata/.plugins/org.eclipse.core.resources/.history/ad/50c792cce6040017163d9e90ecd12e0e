@@ -20,7 +20,7 @@ public class Spreadsheet implements Grid
 	{
 		String [] words = command.split(" ",3);
 	//clear cells
-		if(words[0].toLowerCase().equals("clear")){
+		if(words[0].equals("clear")){
 			clearCells(words);
 			return getGridText();
 		}
@@ -33,7 +33,7 @@ public class Spreadsheet implements Grid
 		}
 	//inspect cells
 		SpreadsheetLocation inspectIt = new SpreadsheetLocation(words[0]);
-		return getCell(inspectIt).fullCellText();
+		return spreadsheet[inspectIt.getCol()][inspectIt.getRow()].fullCellText();
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class Spreadsheet implements Grid
 	public void clearCells(String[] clear){
 		if(clear.length == 2){
 			SpreadsheetLocation clearcell = new SpreadsheetLocation(clear[1]);
-			spreadsheet[clearcell.getCol()][clearcell.getRow()] = new EmptyCell();
+			spreadsheet[clearcell.getRow()][clearcell.getCol()] = new EmptyCell();
 		}
 		else{
 			for(int i = 0; i < 12; i++){

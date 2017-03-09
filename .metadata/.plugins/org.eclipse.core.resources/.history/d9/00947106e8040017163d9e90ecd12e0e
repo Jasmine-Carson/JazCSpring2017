@@ -33,7 +33,7 @@ public class Spreadsheet implements Grid
 		}
 	//inspect cells
 		SpreadsheetLocation inspectIt = new SpreadsheetLocation(words[0]);
-		return getCell(inspectIt).fullCellText();
+		return spreadsheet[inspectIt.getCol()][inspectIt.getRow()].fullCellText();
 	}
 
 	@Override

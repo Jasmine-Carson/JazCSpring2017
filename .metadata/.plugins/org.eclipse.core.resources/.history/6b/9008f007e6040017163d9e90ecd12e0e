@@ -21,12 +21,8 @@ public class SpreadsheetLocation implements Location
     
     public SpreadsheetLocation(String cellName)
     {
-    	if(cellName.charAt(0) > 96){
-    		column = cellName.charAt(0)-97;
-    	}
-    	else{
-    		column = cellName.charAt(0)-65;
-    	}      
+    	cellName.toUpperCase();
+        column = cellName.charAt(0)-65;
         row = Integer.parseInt(cellName.substring(1))-1;
     }
 

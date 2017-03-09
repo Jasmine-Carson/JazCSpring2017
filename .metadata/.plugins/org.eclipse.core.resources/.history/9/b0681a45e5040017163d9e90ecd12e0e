@@ -15,7 +15,10 @@ public class TextCell implements Cell {
 			abbText = abbText + " ";
 		}
 		if(abbText.length()>10){
-			abbText = abbText.substring(0, 10);
+			abbText = abbText.substring(0, 9);
+		}
+		if(abbText.length() == 10){
+			abbText = text;
 		}
 		return abbText;
 	}
