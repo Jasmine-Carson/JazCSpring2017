@@ -18,12 +18,9 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		if (command.length() == 0){
-			return "";
-		}
 		String [] words = command.split(" ",3);
 	//clear cells
-		if(words[0].equalsIgnoreCase("clear")){
+		if(words[0].toLowerCase().equals("clear")){
 			clearCells(words);
 			return getGridText();
 		}

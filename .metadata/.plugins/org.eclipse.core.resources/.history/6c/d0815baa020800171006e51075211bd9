@@ -1,0 +1,16 @@
+package textExcel;
+
+public class ValueCell extends RealCell implements Cell {
+
+	String fullText;
+	double doubleValue;
+	
+	public ValueCell(String value){
+		super(value);
+		if  (value.indexOf(".")>=0){
+			String [] parts = value.split(".");
+			
+		}		
+	}
+	
+}
