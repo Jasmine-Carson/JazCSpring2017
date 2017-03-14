@@ -98,22 +98,12 @@ public class Spreadsheet implements Grid
 	}
 	
 	public void setCell(String[] values){
-		//this doesn't work for formula cells!!! It should handle everything though
-		SpreadsheetLocation cell = new SpreadsheetLocation(values[0]);
-		String cellValue = values[2];
-		if(cellValue.indexOf("\"")>=0){		
-			cellValue = cellValue.substring(1, cellValue.length()-1);
-			spreadsheet[cell.getCol()][cell.getRow()] = new TextCell(cellValue);
-		}
-		else if(cellValue.indexOf("%")>=0){
-			spreadsheet[cell.getCol()][cell.getRow()] = new PercentCell(cellValue.substring(0,cellValue.length()-2));
-		}
-		else if(cellValue.indexOf("(")>=0){
-			//put FormulaCell here!!!
-		}
-		else{
-			spreadsheet[cell.getCol()][cell.getRow()] = new ValueCell(cellValue);
-		}
+		//this only works for text cells!!!!!!
+		//you're going to have to fix it later for real cells!!!!!
+		SpreadsheetLocation textcell = new SpreadsheetLocation(values[0]);
+		String text = values[2];
+		text = text.substring(1, text.length()-1);
+		spreadsheet[textcell.getCol()][textcell.getRow()] = new TextCell(text);
 		return;
 	}
 

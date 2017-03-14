@@ -34,8 +34,7 @@ public class ValueCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		int length = abbText.length();
-		if(length<=10){
+		while(abbText.length()<=10){
 			abbText = abbText + " ";
 		}
 		return abbText.substring(0, 9);

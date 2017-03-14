@@ -2,12 +2,15 @@ package textExcel;
 
 public abstract class RealCell implements Cell {
 
-	private String fullCell;
-	private double doubleValue;
-	private String abbText;
+	String fullCell;
+	double doubleValue;
 	
 	@Override
 	public String abbreviatedCellText() {
+		String abbText = fullCell;
+		while(abbText.length()<=10){
+			abbText = abbText + " ";
+		}
 		return abbText.substring(0, 9);
 	}
 
@@ -22,12 +25,6 @@ public abstract class RealCell implements Cell {
 	
 	public RealCell(String value){
 		fullCell = value;
-		//make abbreviated cell text
-		String abbText = value;
-		while(abbText.length()<=10){
-			abbText = abbText + " ";
-		}
-		//make decimal value
 		if  (value.indexOf(".")>=0){
 			String [] parts = value.split(".");
 			if(parts.length>1){
