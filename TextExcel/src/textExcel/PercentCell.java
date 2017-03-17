@@ -7,11 +7,16 @@ public class PercentCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
+		System.out.println();
 		String abbText = fullCell;
-		while(abbText.length()<9){
-			abbText = abbText+" ";
+		abbText = abbText+"%";
+		while(abbText.length()<10){
+			abbText = abbText + " ";
 		}
-		return (abbText.substring(0, 8)+"%");
+		if(abbText.length()>10){
+			abbText = abbText.substring(0, 9)+"%";
+		}
+		return abbText;
 	}
 
 	@Override

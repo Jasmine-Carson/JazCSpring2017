@@ -1,0 +1,59 @@
+package textExcel;
+
+public abstract class RealCell implements Cell {
+
+	private String fullCell;
+	private double doubleValue;
+	
+	@Override
+	public String abbreviatedCellText() {
+		String abbText = fullCell;
+		while(abbText.length()<10){
+			abbText = abbText + " ";
+		}
+		if(abbText.length()>10){
+			abbText = abbText.substring(0, 10);
+		}
+		return abbText;
+	}
+
+	@Override
+	public String fullCellText() {
+		return ("\""+fullCell+"\"");
+	}
+	
+	public double getDoubleValue(){
+		return doubleValue;
+	}
+	
+	public RealCell(String value){
+		fullCell = value;
+		//make decimal value
+		if  (value.indexOf(".")>=0){
+			String [] parts = value.split(".");
+			if(parts.length>1){
+				int whole = Integer.parseInt(parts[0]);
+				int decimal = Integer.parseInt(parts[1]);
+				double dec = (double) decimal;
+				while(dec>=1){
+					dec = dec/10;
+				}
+				doubleValue = (double) whole + dec;
+			}
+		}
+		else{
+			if(value.indexOf("%")>0){
+				if(value.length()>2){
+					value = value.substring(0, value.length()-1);
+				}
+				else{
+					char num = value.charAt(0);
+					System.out.println(num);
+					value = num+"";
+				}
+			}
+			doubleValue = (double) Integer.parseInt(value);
+		}
+	}
+
+}

@@ -4,11 +4,17 @@ public abstract class RealCell implements Cell {
 
 	private String fullCell;
 	private double doubleValue;
-	private String abbText;
 	
 	@Override
 	public String abbreviatedCellText() {
-		return abbText.substring(0, 9);
+		String abbText = fullCell;
+		while(abbText.length()<10){
+			abbText = abbText + " ";
+		}
+		if(abbText.length()>10){
+			abbText = abbText.substring(0, 10);
+		}
+		return abbText;
 	}
 
 	@Override
@@ -22,11 +28,7 @@ public abstract class RealCell implements Cell {
 	
 	public RealCell(String value){
 		fullCell = value;
-		//make abbreviated cell text
-		String abbText = value;
-		while(abbText.length()<=10){
-			abbText = abbText + " ";
-		}
+		System.out.println(fullCell);
 		//make decimal value
 		if  (value.indexOf(".")>=0){
 			String [] parts = value.split(".");
@@ -43,6 +45,7 @@ public abstract class RealCell implements Cell {
 		else{
 			doubleValue = (double) Integer.parseInt(value);
 		}
+		System.out.println(doubleValue+"");
 	}
 
 }

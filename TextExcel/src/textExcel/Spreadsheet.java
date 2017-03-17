@@ -106,7 +106,7 @@ public class Spreadsheet implements Grid
 			spreadsheet[cell.getCol()][cell.getRow()] = new TextCell(cellValue);
 		}
 		else if(cellValue.indexOf("%")>=0){
-			spreadsheet[cell.getCol()][cell.getRow()] = new PercentCell(cellValue.substring(0,cellValue.length()-2));
+			spreadsheet[cell.getCol()][cell.getRow()] = new PercentCell(cellValue.substring(0,cellValue.length()-1));
 		}
 		else if(cellValue.indexOf("(")>=0){
 			//put FormulaCell here!!!
