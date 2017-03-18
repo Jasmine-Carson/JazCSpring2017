@@ -7,8 +7,7 @@ public class ValueCell extends RealCell implements Cell {
 	
 	public ValueCell(String value){
 		super(value);
-		fullCell = value;
-		//make abbreviated cell text
+		fullCell = super.fullCellText();
 	}
 	
 	@Override
@@ -25,7 +24,7 @@ public class ValueCell extends RealCell implements Cell {
 
 	@Override
 	public String fullCellText() {
-		return ("\""+fullCell+"\"");
+		return (fullCell+"");
 	}
 	
 	public double getDoubleValue(){

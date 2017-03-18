@@ -1,0 +1,36 @@
+package textExcel;
+
+public class ValueCell extends RealCell implements Cell {
+
+	private String fullCell;
+	private double doubleValue;
+	
+	public ValueCell(String value){
+		super(value);
+		fullCell = value;
+		//make abbreviated cell text
+	}
+	
+	@Override
+	public String abbreviatedCellText() {
+		String abbText = fullCell;
+		while(abbText.length()<10){
+			abbText = abbText + " ";
+		}
+		if(abbText.length()>10){
+			abbText = abbText.substring(0, 10);
+		}
+		return abbText;
+	}
+
+	@Override
+	public String fullCellText() {
+		return ("\""+fullCell+"\"");
+	}
+	
+	public double getDoubleValue(){
+		return doubleValue;
+	}
+
+	
+}

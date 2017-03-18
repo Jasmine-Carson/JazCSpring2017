@@ -19,7 +19,7 @@ public abstract class RealCell implements Cell {
 
 	@Override
 	public String fullCellText() {
-		return ("\""+fullCell+"\"");
+		return (fullCell+"");
 	}
 	
 	public double getDoubleValue(){
@@ -28,12 +28,11 @@ public abstract class RealCell implements Cell {
 	
 	public RealCell(String value){
 		fullCell = value;
-		System.out.println(fullCell);
 		//make decimal value
 		if  (value.indexOf(".")>=0){
 			String [] parts = value.split(".");
 			if(parts.length>1){
-				int whole = Integer.parseInt(parts[0]);
+				long whole = Integer.parseInt(parts[0]);
 				int decimal = Integer.parseInt(parts[1]);
 				double dec = (double) decimal;
 				while(dec>=1){
@@ -43,9 +42,8 @@ public abstract class RealCell implements Cell {
 			}
 		}
 		else{
-			doubleValue = (double) Integer.parseInt(value);
+			doubleValue = (double) Long.parseLong(value);
 		}
-		System.out.println(doubleValue+"");
 	}
 
 }
