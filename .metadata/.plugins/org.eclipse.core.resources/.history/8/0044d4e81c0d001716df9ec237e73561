@@ -1,5 +1,4 @@
 package textExcel;
-import java.io.*;
 
 // Update this file with your own code.
 
@@ -116,27 +115,6 @@ public class Spreadsheet implements Grid
 			spreadsheet[cell.getCol()][cell.getRow()] = new ValueCell(cellValue);
 		}
 		return;
-	}
-	
-	private String filestuff(String filename){
-		PrintStream outputFile;
-
-		try {
-
-		outputFile = new PrintStream(new File(filename));
-
-		}
-
-		catch (FileNotFoundException e) {
-
-		return "File not found: " + filename;
-
-		}
-
-		//put in code
-		outputFile.close();
-
-		return null;
 	}
 
 }
