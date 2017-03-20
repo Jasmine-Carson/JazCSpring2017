@@ -1,0 +1,38 @@
+package textExcel;
+
+public class PercentCell extends RealCell implements Cell {
+
+	private String fullCell;
+	private double doubleValue;
+	
+	@Override
+	public String abbreviatedCellText() {
+		String abbText = fullCell;
+		abbText = abbText+"%";
+		while(abbText.length()<10){
+			abbText = abbText + " ";
+		}
+		if(abbText.length()>10){
+			abbText = abbText.substring(0, 9)+"%";
+		}
+		return abbText;
+	}
+
+	@Override
+	public String fullCellText() {
+		return (doubleValue+"");
+	}
+	
+	public double getDoubleValue(){
+		return doubleValue;
+	}
+	
+	public PercentCell(String value){
+		super(value);
+		doubleValue = Double.parseDouble(value);
+		System.out.println(doubleValue);
+		fullCell = value;
+		doubleValue = doubleValue/100.0;
+	}
+
+}

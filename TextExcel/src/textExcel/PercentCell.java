@@ -8,12 +8,11 @@ public class PercentCell extends RealCell implements Cell {
 	@Override
 	public String abbreviatedCellText() {
 		String abbText = fullCell;
-		abbText = abbText+"%";
+		if(abbText.indexOf(".")>=0){
+			abbText = abbText.substring(0, abbText.indexOf("."))+"%";
+		}
 		while(abbText.length()<10){
 			abbText = abbText + " ";
-		}
-		if(abbText.length()>10){
-			abbText = abbText.substring(0, 9)+"%";
 		}
 		return abbText;
 	}
@@ -29,21 +28,7 @@ public class PercentCell extends RealCell implements Cell {
 	
 	public PercentCell(String value){
 		super(value);
-		if  (value.indexOf(".")>=0){
-			String [] parts = value.split(".");
-			if(parts.length>1){
-				int whole = Integer.parseInt(parts[0]);
-				int decimal = Integer.parseInt(parts[1]);
-				double dec = (double) decimal;
-				while(dec>=1){
-					dec = dec/10;
-				}
-				doubleValue = (double) whole + dec;
-			}
-		}
-		else{
-			doubleValue = (double) Long.parseLong(value);
-		}
+		doubleValue = Double.parseDouble(value);
 		fullCell = value;
 		doubleValue = doubleValue/100.0;
 	}
