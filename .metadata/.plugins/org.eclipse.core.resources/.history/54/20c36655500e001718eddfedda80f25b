@@ -36,13 +36,9 @@ public class Spreadsheet implements Grid
 				return getGridText();
 			}
 		}
-	//save files
-		if(words[0].equalsIgnoreCase("save")){
-				return save(words[1]);		
-		}
-	//open files
-		if(words[0].equalsIgnoreCase("open")){
-			return open(words[1]);
+	//save or open files
+		if(words[0].equalsIgnoreCase("save")||words[0].equalsIgnoreCase("open")){
+			return saveAndOpen(words[1], words[0]);
 		}
 	//inspect cells
 		SpreadsheetLocation inspectIt = new SpreadsheetLocation(words[0]);
@@ -119,7 +115,7 @@ public class Spreadsheet implements Grid
 			spreadsheet[cell.getCol()][cell.getRow()] = new PercentCell(cellValue.substring(0,cellValue.length()-1));
 		}
 		else if(cellValue.indexOf("(")>=0){
-			spreadsheet[cell.getCol()][cell.getRow()] = new FormulaCell(cellValue);
+			//put FormulaCell here!!!
 		}
 		else{
 			spreadsheet[cell.getCol()][cell.getRow()] = new ValueCell(cellValue);
@@ -127,44 +123,40 @@ public class Spreadsheet implements Grid
 		return;
 	}
 	
-	private String save(String filename){
+	private String saveAndOpen(String filename, String command){
 		PrintStream outputFile;
+
 		try {
+
 		outputFile = new PrintStream(new File(filename));
+
 		}
+
 		catch (FileNotFoundException e) {
+
 		return "File not found: " + filename;
+
 		}
+
+		if(command.equalsIgnoreCase("save")){
 			for(int i = 0; i < 12; i++){
 				for (int j = 0; j < 20; j++){
 					if(!(spreadsheet[i][j] instanceof EmptyCell)){
 						char letter = (char) ('A' + i);
 						outputFile.print(letter+""+j+",");
-						//type of cell and , so it looks like "TextCell,"
+						//type of cell and , so "TextCell,"
 						outputFile.println(spreadsheet[i][j].fullCellText());
 					}
 				}
-			}	
+			}
+		}
+		else if (command.equalsIgnoreCase("open")){
+			Scanner read = new Scanner(outputFile);
+		}
+		
 		outputFile.close();
+
 		return getGridText();
-	}
-	private String open(String filename){
-	     Scanner inputFile;
-	     try {
-	        inputFile = new Scanner(new File(filename));
-	     }
-	     catch (FileNotFoundException e) {
-	            return "File not found: " + filename;
-	     }
-	     String[] values;
-	     while(inputFile.hasNextLine()){
-	    	 values = inputFile.nextLine().split(",");
-	    	 setCell(values);
-	     }
-	     inputFile.close();
-
-	     return getGridText();
-
 	}
 
 }

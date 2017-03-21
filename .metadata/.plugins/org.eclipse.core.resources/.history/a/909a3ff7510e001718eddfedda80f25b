@@ -42,7 +42,7 @@ public class Spreadsheet implements Grid
 		}
 	//open files
 		if(words[0].equalsIgnoreCase("open")){
-			return open(words[1]);
+			
 		}
 	//inspect cells
 		SpreadsheetLocation inspectIt = new SpreadsheetLocation(words[0]);
