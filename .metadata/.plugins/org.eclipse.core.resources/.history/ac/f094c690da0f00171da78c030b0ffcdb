@@ -165,6 +165,7 @@ public class Spreadsheet implements Grid
 	     String[] values;
 	     while(inputFile.hasNextLine()){
 	    	 String stuff = inputFile.nextLine();
+	    	 System.out.println(stuff);
 	    	 values = stuff.split(",");
 	    	 setCell(values);
 	     }

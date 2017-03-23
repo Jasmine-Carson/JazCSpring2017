@@ -7,7 +7,7 @@ public class FormulaCell extends RealCell implements Cell {
 	@Override
 	public String abbreviatedCellText() {
 		//just trims to 10 spaces for now
-		String abbText = getDoubleValue()+"";
+		String abbText = fullCell;
 		while(abbText.length()<10){
 			abbText = abbText + " ";
 		}
@@ -19,7 +19,7 @@ public class FormulaCell extends RealCell implements Cell {
 
 	@Override
 	public String fullCellText() {
-		return getDoubleValue()+"";
+		return fullCell;
 	}
 	
 	public FormulaCell(String value){
@@ -30,9 +30,9 @@ public class FormulaCell extends RealCell implements Cell {
 	public double getDoubleValue(){
 		//do operations
 		String[] parts = fullCell.split(" ");
-		double num1 = Double.parseDouble(parts[1]);
+		double num1 = Double.parseDouble(parts[0]);
 		double num2 = 0;
-		for (int i = 3; i<parts.length; i=i+2){
+		for (int i = 2; i<parts.length; i=i+2){
 			num2 = Double.parseDouble(parts[i]);
 			if(parts[i-1].equals("+")){
 				num1 = num2 + num1;

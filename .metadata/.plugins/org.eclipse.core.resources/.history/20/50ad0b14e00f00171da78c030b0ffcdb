@@ -19,7 +19,7 @@ public class FormulaCell extends RealCell implements Cell {
 
 	@Override
 	public String fullCellText() {
-		return getDoubleValue()+"";
+		return fullCell;
 	}
 	
 	public FormulaCell(String value){

@@ -110,13 +110,7 @@ public class Spreadsheet implements Grid
 	public void setCell(String[] values){
 		//this doesn't work for formula cells!!! It should handle everything though
 		SpreadsheetLocation cell = new SpreadsheetLocation(values[0]);
-		String cellValue;
-		if(values.length==3){
-			cellValue = values[2];
-		}
-		else{
-			cellValue = values[1];
-		}
+		String cellValue = values[2];
 		if(cellValue.indexOf("\"")>=0){		
 			cellValue = cellValue.substring(1, cellValue.length()-1);
 			spreadsheet[cell.getCol()][cell.getRow()] = new TextCell(cellValue);
@@ -164,8 +158,7 @@ public class Spreadsheet implements Grid
 	     }
 	     String[] values;
 	     while(inputFile.hasNextLine()){
-	    	 String stuff = inputFile.nextLine();
-	    	 values = stuff.split(",");
+	    	 values = inputFile.nextLine().split(",");
 	    	 setCell(values);
 	     }
 	     inputFile.close();
