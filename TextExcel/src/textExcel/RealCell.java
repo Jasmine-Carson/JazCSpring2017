@@ -28,6 +28,7 @@ public abstract class RealCell implements Cell {
 	
 	public RealCell(String value){
 		fullCell = value;
+		System.out.println(value);
 		//make decimal value
 		if(value.indexOf("(")<0){
 			doubleValue = Double.parseDouble(value);
