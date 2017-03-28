@@ -6,20 +6,19 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	@Override
 	public String abbreviatedCellText() {
-		//just trims to 10 spaces for now
 		String abbText = getDoubleValue()+"";
 		while(abbText.length()<10){
 			abbText = abbText + " ";
 		}
 		if(abbText.length()>10){
-			abbText = abbText.substring(0, 9)+")";
+			abbText = abbText.substring(0, 10);
 		}
 		return abbText;
 	}
 
 	@Override
 	public String fullCellText() {
-		return getDoubleValue()+"";
+		return fullCell;
 	}
 	
 	public FormulaCell(String value){
@@ -29,11 +28,25 @@ public class FormulaCell extends RealCell implements Cell {
 	
 	public double getDoubleValue(){
 		//do operations
-		String[] parts = fullCell.split(" ");
-		double num1 = Double.parseDouble(parts[1]);
+		String[] parts = this.fullCell.split(" ");
+		double num1 = 0;
+		RealCell value;
+		if(isCell(parts[1])){
+			//value = (RealCell) Spreadsheet.getCell(new SpreadsheetLocation(parts[1]));
+			//num1 = value.getDoubleValue();
+		}
+		else{
+			num1 = Double.parseDouble(parts[1]);
+		}
 		double num2 = 0;
 		for (int i = 3; i<parts.length; i=i+2){
-			num2 = Double.parseDouble(parts[i]);
+			if(isCell(parts[i])){
+				//value = (RealCell) spreadsheet.getCell(new SpreadsheetLocation(parts[i]));
+				//num2 = value.getDoubleVaue();
+			}
+			else{
+				num2 = Double.parseDouble(parts[i]);
+			}
 			if(parts[i-1].equals("+")){
 				num1 = num2 + num1;
 			}
@@ -49,5 +62,20 @@ public class FormulaCell extends RealCell implements Cell {
 		}
 		return num1;
 	}
+	
+	public boolean isCell(String maybe){
+		for(char c = 'A'; c <= 'L'; c++){
+			if(maybe.charAt(0)==c){
+				return true;
+			}
+		}
+		for(char c = 'a'; c <= 'l'; c++){
+			if(maybe.charAt(0)==c){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 }

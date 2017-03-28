@@ -1,1 +1,6 @@
-A0,PercentCell,0.23521822B2,ValueCell,-52.5D9,TextCell,"ChocolateChocolateChipCrustedCookie"F3,FormulaCell,21.0J5,ValueCell,2.888L19,ValueCell,0
+A1,PercentCell,0.23521822
+B3,ValueCell,-52.5
+D10,TextCell,"ChocolateChocolateChipCrustedCookie"
+F4,FormulaCell,( 2 + 1 * 7 )
+J6,ValueCell,2.888
+L20,ValueCell,0

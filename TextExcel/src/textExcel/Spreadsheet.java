@@ -108,7 +108,6 @@ public class Spreadsheet implements Grid
 	}
 	
 	public void setCell(String[] values){
-		//this doesn't work for formula cells!!! It should handle everything though
 		SpreadsheetLocation cell = new SpreadsheetLocation(values[0]);
 		String cellValue;
 		cellValue = values[2];
@@ -144,18 +143,18 @@ public class Spreadsheet implements Grid
 				for (int j = 0; j < 20; j++){
 					if(!(spreadsheet[i][j] instanceof EmptyCell)){
 						char letter = (char) ('A' + i);
-						outputFile.print(letter+""+j+",");
+						outputFile.print(letter+""+(j+1)+",");
 						if(spreadsheet[i][j] instanceof PercentCell){
-							outputFile.print("PercentCell,"+spreadsheet[i][j].fullCellText());
+							outputFile.println("PercentCell,"+spreadsheet[i][j].fullCellText());
 						}
 						else if(spreadsheet[i][j] instanceof ValueCell){
-							outputFile.print("ValueCell,"+spreadsheet[i][j].fullCellText());
+							outputFile.println("ValueCell,"+spreadsheet[i][j].fullCellText());
 						}
 						else if(spreadsheet[i][j] instanceof TextCell){
-							outputFile.print("TextCell,"+spreadsheet[i][j].fullCellText());
+							outputFile.println("TextCell,"+spreadsheet[i][j].fullCellText());
 						}
 						else if(spreadsheet[i][j] instanceof FormulaCell){
-							outputFile.print("FormulaCell,"+spreadsheet[i][j].fullCellText());
+							outputFile.println("FormulaCell,"+spreadsheet[i][j].fullCellText());
 						}
 					}
 				}
