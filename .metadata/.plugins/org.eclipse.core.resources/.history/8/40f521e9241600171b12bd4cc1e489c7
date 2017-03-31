@@ -33,29 +33,9 @@ public class FormulaCell extends RealCell implements Cell {
 		if(parts[1].equalsIgnoreCase("SUM")){
 			SpreadsheetLocation loc1 = new SpreadsheetLocation(parts[2].substring(0, parts[2].indexOf("-")));
 			SpreadsheetLocation loc2 = new SpreadsheetLocation(parts[2].substring(parts[2].indexOf("-")+1));
-			double ans = 0;
-			for(int i = loc1.getCol(); i<=loc2.getCol(); i++){
-				for(int j = loc1.getRow(); j<= loc2.getRow(); j++){
-					RealCell value = (RealCell) spread[i][j];
-					ans = ans + value.getDoubleValue();
-				}
-			}
-			return ans;
 		}
 		else if(parts[1].equalsIgnoreCase("AVG")){
-			double ans = 0;
-			int counter = 0;
-			SpreadsheetLocation loc1 = new SpreadsheetLocation(parts[2].substring(0, parts[2].indexOf("-")));
-			SpreadsheetLocation loc2 = new SpreadsheetLocation(parts[2].substring(parts[2].indexOf("-")+1));
-			for(int i = loc1.getCol(); i<=loc2.getCol(); i++){
-				for(int j = loc1.getRow(); j<= loc2.getRow(); j++){
-					RealCell value = (RealCell) spread[i][j];
-					ans = ans + value.getDoubleValue();
-					counter++;
-				}
-			}
-			ans = ans/counter;
-			return ans;
+			
 		}
 		else{
 			double num1 = 0;
